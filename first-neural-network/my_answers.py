@@ -94,7 +94,7 @@ class NeuralNetwork(object):
         # TODO: Calculate the hidden layer's contribution to the error
         hidden_error = np.dot(output_error_term.reshape(()), self.weights_hidden_to_output)
         
-        hidden_error_term = hidden_error.reshape(2) * hidden_outputs * (1 - hidden_outputs)
+        hidden_error_term = hidden_error.reshape(self.hidden_nodes) * hidden_outputs * (1 - hidden_outputs)
         
         # Weight step (input to hidden)
         delta_weights_i_h += hidden_error_term * X[:, None]
@@ -140,5 +140,5 @@ class NeuralNetwork(object):
 ##########################################################
 iterations = 100
 learning_rate = 0.1
-hidden_nodes = 2
+hidden_nodes = 5
 output_nodes = 1
